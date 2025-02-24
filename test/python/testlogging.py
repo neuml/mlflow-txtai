@@ -4,7 +4,6 @@ Tests for mlflow-txtai logging
 
 import unittest
 
-from datetime import datetime
 from unittest.mock import Mock, patch
 
 import numpy as np
@@ -15,6 +14,7 @@ from mlflow.entities import SpanType
 from mlflow.tracking.default_experiment import DEFAULT_EXPERIMENT_ID
 
 import mlflow_txtai
+
 
 # pylint: disable=W0613
 def batchsearch(*args, **kwargs):

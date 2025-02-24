@@ -10,11 +10,7 @@ from mlflow.utils.autologging_utils import autologging_integration, safe_patch
 
 import txtai
 
-from mlflow_txtai.tracing import patchgenerator, patchmethod
-
-
-# MLflow tracing name
-FLAVOR_NAME = "txtai"
+from mlflow_txtai.tracing import patchgenerator, patchmethod, FLAVOR_NAME
 
 
 @experimental
@@ -110,11 +106,7 @@ def register(mappings):
 
     # Pipelines
     for target in vars(txtai.pipeline).values():
-        if (
-            ischildclass(target, txtai.pipeline.Pipeline)
-            and iscallable(target)
-            and target not in mappings
-        ):
+        if ischildclass(target, txtai.pipeline.Pipeline) and iscallable(target) and target not in mappings:
             mappings[target] = ["__call__"]
 
 

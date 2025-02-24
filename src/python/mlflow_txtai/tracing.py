@@ -21,7 +21,8 @@ from mlflow.utils.autologging_utils.config import AutoLoggingConfig
 
 import txtai
 
-import mlflow_txtai
+
+FLAVOR_NAME = "txtai"
 
 
 def patchgenerator(target, method, function):
@@ -34,6 +35,7 @@ def patchgenerator(target, method, function):
         function: target.method function
     """
 
+    # pylint: disable=C0103
     def fn(self, *args, **kwargs):
         return patchclassgenerator(function, self, *args, **kwargs)
 
@@ -56,12 +58,10 @@ def patchmethod(original, self, *args, **kwargs):
         self.original result
     """
 
-    config = AutoLoggingConfig.init(flavor_name=mlflow_txtai.FLAVOR_NAME)
+    config = AutoLoggingConfig.init(flavor_name=FLAVOR_NAME)
 
     if config.log_traces:
-        with start_span(
-            name=spanname(original, self), span_type=spantype(self)
-        ) as span:
+        with start_span(name=spanname(original, self), span_type=spantype(self)) as span:
             # Set attributes
             for attribute, value in vars(self).items():
                 span.set_attribute(attribute, value)
@@ -95,7 +95,7 @@ def patchclassgenerator(original, self, *args, **kwargs):
         self.original result
     """
 
-    config = AutoLoggingConfig.init(flavor_name=mlflow_txtai.FLAVOR_NAME)
+    config = AutoLoggingConfig.init(flavor_name=FLAVOR_NAME)
 
     if config.log_traces:
         span = startspan(original, self, *args, **kwargs)
@@ -257,8 +257,4 @@ def inputs(func, *args, **kwargs):
         arguments.pop("self")
 
     # Avoid circular references
-    return {
-        k: v.__dict__ if hasattr(v, "__dict__") else v
-        for k, v in arguments.items()
-        if v is not None
-    }
+    return {k: v.__dict__ if hasattr(v, "__dict__") else v for k, v in arguments.items() if v is not None}

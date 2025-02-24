@@ -65,7 +65,7 @@ with mlflow.start_run():
     embeddings.search("MATCH (A)-[]->(B) RETURN A")
 ```
 
-![embeddings-load](https://raw.githubusercontent.com/neuml/mlflow-txtai/master/images/embeddings-index.png)
+![embeddings-load](https://raw.githubusercontent.com/neuml/mlflow-txtai/master/images/embeddings-load.png)
 ![embeddings-index](https://raw.githubusercontent.com/neuml/mlflow-txtai/master/images/embeddings-index.png)
 
 ## Retrieval Augmented Generation (RAG)
@@ -124,6 +124,8 @@ with mlflow.start_run():
 
     print(list(workflow(["Roman Empire", "Greek Empire", "Industrial Revolution"])))
 ```
+
+![workflow](https://raw.githubusercontent.com/neuml/mlflow-txtai/master/images/workflow.png)
 
 ## Agent
 
