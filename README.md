@@ -1,6 +1,25 @@
 # MLflow Automatic Tracing for txtai
 
-[![Version](https://img.shields.io/github/release/neuml/mlflow-txtai.svg?style=flat&color=success)](https://github.com/neuml/mlflow-txtai/releases)
+<p align="center">
+    <a href="https://github.com/neuml/mlflow-txtai/releases">
+        <img src="https://img.shields.io/github/release/neuml/mlflow-txtai.svg?style=flat&color=success" alt="Version"/>
+    </a>
+    <a href="https://github.com/neuml/mlflow-txtai/releases">
+        <img src="https://img.shields.io/github/release-date/neuml/mlflow-txtai.svg?style=flat&color=blue" alt="GitHub Release Date"/>
+    </a>
+    <a href="https://github.com/neuml/mlflow-txtai/issues">
+        <img src="https://img.shields.io/github/issues/neuml/mlflow-txtai.svg?style=flat&color=success" alt="GitHub issues"/>
+    </a>
+    <a href="https://github.com/neuml/mlflow-txtai">
+        <img src="https://img.shields.io/github/last-commit/neuml/mlflow-txtai.svg?style=flat&color=blue" alt="GitHub last commit"/>
+    </a>
+    <a href="https://github.com/neuml/mlflow-txtai/actions?query=workflow%3Abuild">
+        <img src="https://github.com/neuml/mlflow-txtai/workflows/build/badge.svg" alt="Build Status"/>
+    </a>
+    <a href="https://coveralls.io/github/neuml/mlflow-txtai?branch=master">
+        <img src="https://img.shields.io/coverallsCoverage/github/neuml/mlflow-txtai" alt="Coverage Status">
+    </a>
+</p>
 
 This project is an extension that adds MLflow automatic tracing for `txtai`. 
 
