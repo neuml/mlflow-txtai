@@ -22,6 +22,7 @@ from mlflow.utils.autologging_utils.config import AutoLoggingConfig
 import txtai
 
 
+# MLflow tracing name
 FLAVOR_NAME = "txtai"
 
 

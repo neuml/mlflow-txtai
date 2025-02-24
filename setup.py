@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="mlflow-txtai",
-    version="0.1.0",
+    version="0.2.0",
     author="NeuML",
     description="MLflow automatic tracing for txtai",
     long_description=DESCRIPTION,
