@@ -21,7 +21,7 @@
     </a>
 </p>
 
-This project is an extension that adds MLflow automatic tracing for `txtai`. 
+This project is an extension that adds [MLflow](https://mlflow.org/) [automatic tracing](https://mlflow.org/docs/latest/llms/tracing/index.html) for `txtai`.
 
 # Installation
 
@@ -45,12 +45,16 @@ mlflow server --host 127.0.0.1 --port 8000
 
 ```python
 import mlflow
-import mlflow_txtai
 
 mlflow.set_tracking_uri(uri="http://localhost:8000")
 mlflow.set_experiment("txtai")
 
+# MLflow < 2.20.3 requires importing this library directly
+import mlflow_txtai
 mlflow_txtai.autolog()
+
+# MLflow >= 2.20.3
+# mlflow.txtai.autolog()
 ```
 
 ## Textractor
