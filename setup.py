@@ -23,7 +23,7 @@ setup(
     package_dir={"": "src/python"},
     keywords="search embedding machine-learning nlp",
     python_requires=">=3.9",
-    install_requires=["mlflow>=2.20.2", "txtai>=8.3.1"],
+    install_requires=["mlflow>=2.20.3", "txtai>=8.3.1"],
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
