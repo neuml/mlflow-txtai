@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: |
           pip install -U wheel coverage coveralls
-          pip install . txtai==8.4.0
+          pip install . txtai[agent]
           python --version
           make coverage
 

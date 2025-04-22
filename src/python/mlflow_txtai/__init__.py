@@ -38,7 +38,6 @@ def autolog(
     # Base mappings
     mappings = {
         txtai.archive.Archive: ["load", "save"],
-        txtai.Agent: ["__call__"],
         txtai.cloud.Cloud: ["load", "save"],
         txtai.Embeddings: ["batchsearch", "delete", "index", "load", "save", "upsert"],
         txtai.LLM: ["__call__"],
@@ -47,6 +46,10 @@ def autolog(
         txtai.Workflow: ["__call__"],
         txtai.vectors.Vectors: ["vectorize"],
     }
+
+    # Add agent logging only if agents are enabled
+    if "__call__" in txtai.Agent.__dict__:
+        mappings[txtai.Agent] = ["__call__"]
 
     # Add component mappings
     register(mappings)
