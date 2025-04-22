@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: |
           pip install -U wheel coverage coveralls
-          pip install . mlflow==2.20.3
+          pip install . txtai==8.4.0
           python --version
           make coverage
 
