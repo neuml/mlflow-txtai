@@ -153,7 +153,7 @@ The last example runs a [txtai agent](https://neuml.github.io/txtai/agent/) desi
 ```python
 from txtai import Agent, Embeddings
 
-def search(query):
+def search(query: str) -> any:
     """
     Searches a database of astronomy data.
 

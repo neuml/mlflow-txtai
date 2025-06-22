@@ -5,18 +5,14 @@ MLflow automatic tracing for txtai
 import inspect
 import json
 
-from mlflow import MlflowClient, start_span
+from mlflow import start_span
 from mlflow.entities import SpanType
 from mlflow.entities.span_event import SpanEvent
 from mlflow.entities.span_status import SpanStatusCode
 from mlflow.tracing.constant import STREAM_CHUNK_EVENT_NAME_FORMAT, STREAM_CHUNK_EVENT_VALUE_KEY
-from mlflow.tracing.fluent import get_current_active_span
+from mlflow.tracing.fluent import get_current_active_span, start_span_no_context
 from mlflow.tracing.provider import safe_set_span_in_context
-from mlflow.tracing.utils import (
-    TraceJSONEncoder,
-    end_client_span_or_trace,
-    start_client_span_or_trace,
-)
+from mlflow.tracing.utils import TraceJSONEncoder
 from mlflow.utils.autologging_utils.config import AutoLoggingConfig
 
 import txtai
@@ -139,8 +135,7 @@ def startspan(original, self, *args, **kwargs):
     """
 
     # Start span
-    return start_client_span_or_trace(
-        client=MlflowClient(),
+    return start_span_no_context(
         name=spanname(original, self),
         parent_span=get_current_active_span(),
         span_type=spantype(self),
@@ -176,13 +171,12 @@ def endspan(span, outputs=None, error=None):
         error: error to log, if any
     """
 
-    client = MlflowClient()
     if error:
         span.add_event(SpanEvent.from_exception(error))
-        end_client_span_or_trace(client, span, status=SpanStatusCode.ERROR)
+        span.end(status=SpanStatusCode.ERROR)
         return
 
-    end_client_span_or_trace(client, span, outputs=outputs)
+    span.end(outputs=outputs)
 
 
 def spanname(original, self):
